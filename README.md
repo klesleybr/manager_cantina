@@ -1,0 +1,3 @@
+--> Criar formulário que contenha campos suficientes para identificação do usuário e da compra.
+--> Fazer ligação com o Google Sheets.
+--> Estilização com .css
