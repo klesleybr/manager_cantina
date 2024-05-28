@@ -15,7 +15,7 @@
     <form 
     id="form_retiro"
     method = "POST" 
-    action="https://script.google.com/macros/s/AKfycbyWxivLD9GXpbeWCLNA4fryc1dI05vMUmvPw_I3CTPPSBg0kjHuStCPWnagFLjE2QqA/exec"
+    action="form.php"
     autocomplete="off"
     oninput="total.value=(product.value)*(amount_product.value)"
     >
@@ -27,7 +27,7 @@
         <fieldset class="field_container">
             <div>
                 <label for="family">Família*</label> <br>
-                <select name="Família" id="family" required autofocus>
+                <select name="familia" id="family" required autofocus>
                     <option value="f001">Família 1</option>
                     <option value="f002">Família 2</option>
                     <option value="f003">Família 3</option>
@@ -42,25 +42,25 @@
             </div>
             <div>
                 <label for="user_email">Nome do Retirante*</label> <br>
-                <input name="Nome" id="user_nome" type="text" required>
+                <input name="nome" id="user_nome" type="text" required>
             </div>
         </fieldset>
 
         <fieldset class="field_container">
             <div>
                 <label for="user_email">Email*</label>
-                <input id="user_email" name="Email" type="email" required>
+                <input id="user_email" name="email" type="email" required>
             </div>
             <div>
                 <label for="telefone">Telefone*</label>
-                <input id="telefone" name="Telefone" type="tel" required>
+                <input id="telefone" name="telefone" type="tel" required>
             </div>
         </fieldset>
 
         <fieldset class="field_container">
             <div>
                 <label for="product">Produto*</label> <br>
-                <select name="Produto" id="product" required>
+                <select name="produto" id="product" required>
                     <option value="2">Sorvete (R$2,00)</option>
                     <option value="1,5">Picolé (R$1,50)</option>
                     <option value="1">Doce (R$1,00)</option>
@@ -68,7 +68,7 @@
             </div>
             <div>
                 <label for="amount_product">Quantidade*</label> <br>
-                <input name="Quantidade" id="amount_product" min="1" type="number" required>
+                <input name="quantidade" id="amount_product" min="1" type="number" required>
                 <!--
                 <label for="total">Total</label> <br>                    
                 <p>R$ </p> <output name="total" id="total" form="form_retiro" for="product*amount_product"></output>
@@ -77,7 +77,7 @@
         </fieldset>
 
         <div id="confirm_field">
-            <input name="Confirmação" value="Sim" id="confirm" type="checkbox" required>
+            <input name="confirmacao" value="Sim" id="confirm" type="checkbox" required>
             <label for="confirm">Revise as informações e marque a caixa para confirmação.</label>
         </div>
         
