@@ -135,3 +135,15 @@ button:hover {
     background-color: #976b6b61;
 }
 
+#field_download {
+    color: #FFF;
+    font-size: 0.8em;
+    font-family: "League Spartan";
+    padding-bottom: 30px;
+}
+
+#field_download a{
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: underline;
+}
