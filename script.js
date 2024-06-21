@@ -1,5 +1,13 @@
 const formRetiro = document.getElementById("form_retiro");
 
+function transformar(dataHora){
+    if (dataHora < 10){
+        return dataHora.toString().padStart(2, '0');
+    }
+
+    return dataHora
+}
+
 formRetiro.addEventListener("submit", function(event){
     event.preventDefault();
     
@@ -27,7 +35,12 @@ formRetiro.addEventListener("submit", function(event){
     }
 
     const data = new Date();
-    const dataAtual = `${data.getDate()}-${data.getMonth() + 1}-${data.getFullYear()} ${data.getHours()}:${data.getMinutes()}:${data.getSeconds()}`;
+    diaAtual = transformar(data.getDate());
+    mesAtual = transformar(data.getMonth() + 1);
+    horaAtual = transformar(data.getHours());
+    minutoAtual = transformar(data.getMinutes());
+    segundoAtual = transformar(data.getSeconds());
+    const dataAtual = `${diaAtual}-${mesAtual}-${data.getFullYear()} | ${horaAtual}:${minutoAtual}:${segundoAtual}`;
  
 
 
@@ -50,9 +63,9 @@ linkDownload.addEventListener("click", function (){
     }
     let dadosForm = JSON.parse(armazenarDados);
 
-    let conteudoCsv = "Data e Hora,Família,Nome do Retirante,Email,Telefone,Produto,Preço (R$),Quantidade,Total (R$),Confirmação\n";
+    let conteudoCsv = "Data e Hora;Família;Nome do Retirante;Email;Telefone;Produto;Preço (R$);Quantidade;Total (R$);Confirmação\n";
     dadosForm.forEach(row => {
-        conteudoCsv += `${row.dataAtual},${row.familia},${row.nome},${row.email},${row.telefone},${row.descricao},${row.preco},${row.quantidade},${row.preco * row.quantidade},${row.confirma}\n`;
+        conteudoCsv += `${row.dataAtual};${row.familia};${row.nome};${row.email};${row.telefone};${row.descricao};${row.preco.toString().replace(".",",")};${row.quantidade.toString().replace(".",",")};${(row.preco * row.quantidade).toString().replace(".",",")};${row.confirma}\n`;
     });
 
     const a = document.createElement("a");
@@ -65,4 +78,9 @@ linkDownload.addEventListener("click", function (){
     a.click();
 
     document.body.removeChild(a);
+});
+
+const limparLocalStorage = document.getElementById("limparBD");
+limparLocalStorage.addEventListener("click", function(){
+    localStorage.clear();
 });
