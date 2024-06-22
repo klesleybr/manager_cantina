@@ -21,7 +21,8 @@ Para a construção desta aplicação foram usados os seguintes recursos:
 - `CSS`;
 - `JavaScript`;
 - `jQuery`;
-- [`jQuery Mask Plugin`](https://igorescobar.github.io/jQuery-Mask-Plugin/).
+- [`jQuery Mask Plugin`](https://igorescobar.github.io/jQuery-Mask-Plugin/);
+- `Figma`.
 
 ## Licença
 Esta aplicação possui licença do MIT. Para mais detalhes, acesse o arquivo `LICENSE`.
