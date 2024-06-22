@@ -8,7 +8,6 @@ function transformar(dataHora){
     if (dataHora < 10){
         return dataHora.toString().padStart(2, '0');
     }
-
     return dataHora
 }
 
@@ -86,5 +85,6 @@ linkDownload.addEventListener("click", function (){
 
 const limparLocalStorage = document.getElementById("limparBD");
 limparLocalStorage.addEventListener("click", function(){
-    localStorage.clear();
+    let confirmaLimpar = confirm("Você realmente deseja apagar os dados armazenados no Local Storage?");
+    if (confirmaLimpar) localStorage.clear();
 });
