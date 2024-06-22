@@ -146,8 +146,25 @@ button:hover {
 #field_download > p {
     margin-bottom: 10px;
 }
-#field_download a{
+#field_download a {
     color: #FFF;
     font-weight: bold;
     text-decoration: underline;
 }
+
+footer {
+    padding-bottom: 20px;
+}
+
+footer p {
+    font-family: "League Spartan";
+    font-size: 0.6em;
+    color: #FFF;
+    text-align: center;
+    margin: 10px 0;
+}
+
+footer #text-footer {
+    font-weight: bold;
+}
+
