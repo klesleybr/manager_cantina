@@ -1,5 +1,9 @@
 const formRetiro = document.getElementById("form_retiro");
 
+$(formRetiro).ready(function(){
+    $("#telefone").mask('(00) 00000-0000');
+});
+
 function transformar(dataHora){
     if (dataHora < 10){
         return dataHora.toString().padStart(2, '0');
