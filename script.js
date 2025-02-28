@@ -16,8 +16,8 @@ formRetiro.addEventListener("submit", function(event){
     
     const familia = document.getElementById("family").value;
     const nome = document.getElementById("nome").value;
-    const email = document.getElementById("user_email").value;
-    const telefone = document.getElementById("telefone").value;
+    // const email = document.getElementById("user_email").value;
+    // const telefone = document.getElementById("telefone").value;
     const produto = document.getElementById("product").value;
     const quantidade = document.getElementById("amount").value;
     const confirma = document.getElementById("confirm").value;
@@ -50,10 +50,12 @@ formRetiro.addEventListener("submit", function(event){
     let armazenarDados = localStorage.getItem("dadosForm");
     let dadosForm = armazenarDados ? JSON.parse(armazenarDados) : [];
 
-    dadosForm.push({ dataAtual, familia, nome, email, telefone, descricao, preco, quantidade, confirma });
+    // dadosForm.push({ dataAtual, familia, nome, email, telefone, descricao, preco, quantidade, confirma });
+    dadosForm.push({ dataAtual, familia, nome, descricao, preco, quantidade, confirma });
 
     localStorage.setItem("dadosForm", JSON.stringify(dadosForm));
 
+    alert("Compra registrada!");
     formRetiro.reset();
 });
 
@@ -61,21 +63,22 @@ const linkDownload = document.getElementById("baixarCsv");
 linkDownload.addEventListener("click", function (){
     let armazenarDados = localStorage.getItem("dadosForm");
     if(!armazenarDados){
-        alert("Não há formulário disponível para download.");
+        alert("Não há relatório disponível para download.");
         return;
     }
     let dadosForm = JSON.parse(armazenarDados);
 
-    let conteudoCsv = "Data e Hora;Família;Nome do Retirante;Email;Telefone;Produto;Preço (R$);Quantidade;Total (R$);Confirmação\n";
+    // let conteudoCsv = "Data e Hora;Família;Nome do Retirante;Email;Telefone;Produto;Preço (R$);Quantidade;Total (R$);Confirmação\n";
+    let conteudoCsv = "Data e Hora;Representante;Nome do Retirante;Produto;Preço (R$);Quantidade;Total (R$);Confirmação\n";
     dadosForm.forEach(row => {
-        conteudoCsv += `${row.dataAtual};${row.familia};${row.nome};${row.email};${row.telefone};${row.descricao};${row.preco.toString().replace(".",",")};${row.quantidade.toString().replace(".",",")};${(row.preco * row.quantidade).toString().replace(".",",")};${row.confirma}\n`;
+        conteudoCsv += `${row.dataAtual};${row.familia};${row.nome};${row.descricao};${row.preco.toString().replace(".",",")};${row.quantidade.toString().replace(".",",")};${(row.preco * row.quantidade).toString().replace(".",",")};${row.confirma}\n`;
     });
 
     const a = document.createElement("a");
     const blob = new Blob([conteudoCsv], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     a.href = url;
-    a.download = "relatorio-retiro-2024.csv";
+    a.download = "relatorio-retiro-2025.csv";
 
     document.body.appendChild(a);
     a.click();
@@ -83,8 +86,25 @@ linkDownload.addEventListener("click", function (){
     document.body.removeChild(a);
 });
 
+function requirePwd(event) {
+    event.preventDefault;
+    let correctPwd = "@wwjs09AX";
+    let writedPwd = prompt("Informe a senha para prosseguir: ");
+
+    if(writedPwd == correctPwd){
+        return 1;
+    }
+    return 0;
+}
+
 const limparLocalStorage = document.getElementById("limparBD");
 limparLocalStorage.addEventListener("click", function(){
-    let confirmaLimpar = confirm("Você realmente deseja apagar os dados armazenados no Local Storage?");
-    if (confirmaLimpar) localStorage.clear();
+    if(requirePwd("click") == 1){
+        let confirmaLimpar = confirm("Você realmente deseja apagar os dados armazenados no Local Storage?");
+        if (confirmaLimpar) localStorage.clear();
+        alert("Dados apagados!");
+        formRetiro.reset();
+    } else{
+        alert("Senha incorreta!");
+    }
 });
