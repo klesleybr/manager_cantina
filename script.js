@@ -25,17 +25,97 @@ formRetiro.addEventListener("submit", function(event){
     let descricao = "";
     let preco = 0;
     if(produto == 1){
-        descricao = "Sorvete";
-        preco = 2;
+        descricao = "Refrigerante Coca-Cola Zero Lata 350 mL";
+        preco = 6;
     }
     else if(produto == 2){
-        descricao = "Picolé";
-        preco = 1.5;
+        descricao = "Refrigerante Schweppes Lata 350 mL";
+        preco = 6.50;
     }
     else if(produto == 3){
-        descricao = "Doce";
+        descricao = "Refrigerante Soda Lata 350 mL";
+        preco = 5.50;
+    }
+    else if(produto == 4){
+        descricao = "Refrigerante Guaraná Lata 350 mL";
+        preco = 5.50;
+    }
+    else if(produto == 5){
+        descricao = "Refrigerante Coca-Cola 2L";
+        preco = 14;
+    }
+    else if(produto == 6){
+        descricao = "Refrigerante Fanta 2L";
+        preco = 12.50;
+    }
+    else if(produto == 7){
+        descricao = "Refrigerante Kuait 2L";
+        preco = 12.50;
+    }
+    else if(produto == 8){
+        descricao = "Água com Gás Cristal 500 mL";
+        preco = 4;
+    }
+    else if(produto == 9){
+        descricao = "Água Tônica Antártica 350 mL";
+        preco = 6;
+    }
+    else if(produto == 10){
+        descricao = "Drops Freegells";
+        preco = 2;
+    }
+    else if(produto == 11){
+        descricao = "Drops Azedinho";
+        preco = 1.80;
+    }
+    else if(produto == 12){
+        descricao = "Chocolate Batom";
+        preco = 2;
+    }
+    else if(produto == 13){
+        descricao = "Salgadinho";
+        preco = 1.50;
+    }
+    else if(produto == 14){
+        descricao = "Pipoca Boni";
+        preco = 0.80;
+    }
+    else if(produto == 15){
+        descricao = "Pirulito";
+        preco = 0.60;
+    }
+    else if(produto == 16){
+        descricao = "Paçoca";
         preco = 1;
     }
+    else if(produto == 17){
+        descricao = "Lanche Goiabada";
+        preco = 1.50;
+    }
+    else if(produto == 18){
+        descricao = "Pastel";
+        preco = 7;
+    }
+    else if(produto == 19){
+        descricao = "Coxinha";
+        preco = 7;
+    }
+    else if(produto == 20){
+        descricao = "Cachorro Quente de Forno";
+        preco = 7;
+    }
+    else if(produto == 21){
+        descricao = "Suco de Goiaba 200 mL";
+        preco = 2;
+    }
+    else if(produto == 22){
+        descricao = "Suco de Manga 200 mL";
+        preco = 2;
+    }
+    else{
+        return 0;
+    }
+
 
     const data = new Date();
     diaAtual = transformar(data.getDate());
@@ -94,6 +174,10 @@ function requirePwd(event) {
     if(writedPwd == correctPwd){
         return 1;
     }
+    else if(writedPwd != null && writedPwd != correctPwd){
+        alert("Senha incorreta!");
+    }
+
     return 0;
 }
 
@@ -101,10 +185,11 @@ const limparLocalStorage = document.getElementById("limparBD");
 limparLocalStorage.addEventListener("click", function(){
     if(requirePwd("click") == 1){
         let confirmaLimpar = confirm("Você realmente deseja apagar os dados armazenados no Local Storage?");
-        if (confirmaLimpar) localStorage.clear();
-        alert("Dados apagados!");
-        formRetiro.reset();
-    } else{
-        alert("Senha incorreta!");
-    }
+        if (confirmaLimpar) {
+            localStorage.clear();
+            alert("Dados apagados!");
+
+            formRetiro.reset();
+        }
+    } 
 });
