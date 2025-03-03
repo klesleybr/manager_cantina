@@ -54,7 +54,7 @@ formRetiro.addEventListener("submit", function(event){
     }
     else if(produto == 8){
         descricao = "Água com Gás Cristal 500 mL";
-        preco = 4;
+        preco = 3;
     }
     else if(produto == 9){
         descricao = "Água Tônica Antártica 350 mL";
